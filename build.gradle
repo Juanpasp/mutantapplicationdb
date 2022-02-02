@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.mutant.project'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+jar{
+    baseName = 'mutant-application-api' 
+    version = '1.0.0'
+    manifest {
+    	attributes "Manifest-Version": 1.0,
+    			'Main-class':'com.mutant.project.mutantapplicationapi'
+    }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
+	
+	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.12.4'
+	testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.0'
+	
+	
+	
+	
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
